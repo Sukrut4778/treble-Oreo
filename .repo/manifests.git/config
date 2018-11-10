@@ -1,8 +1,0 @@
-[core]
-	repositoryformatversion = 0
-	filemode = true
-[filter "lfs"]
-	smudge = git-lfs smudge --skip -- %f
-[remote "origin"]
-	url = git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
