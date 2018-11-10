@@ -35,7 +35,7 @@ on fs
     chmod 0664 /dev/ion
     chown system system /dev/ion
 
-on property:ro.crypto.state=encrypted
+on property:ro.crypto.state=decrypted
     start sbinqseecomd
 
 # Separate copy needed to use /sbin/linker64 instead of /system/bin/linker64
