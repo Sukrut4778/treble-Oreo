@@ -48,17 +48,17 @@ TARGET_NO_BOOTLOADER := true
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
-TARGET_KEYMASTER_WAIT_FOR_QSEE := true
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_FBE := true
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78af000 androidboot.selinux=permissive
-BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_TAGS_OFFSET := 0x00000100
-BOARD_RAMDISK_OFFSET := 0x01000000
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/Image.gz-dtb
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78af000
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+BOARD_KERNEL_PAGESIZE :=  2048
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8953
+TARGET_KERNEL_CONFIG := rosy_defconfig
+#TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/Image.gz-dtb
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -90,7 +90,6 @@ TW_INCLUDE_FUSE_NTFS := true
 
 # TWRP Configuration
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
-#RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_IGNORE_MISC_WIPE_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/soc/7000000.ssusb/7000000.dwc3/gadget/lun0/file"
@@ -103,3 +102,4 @@ TW_SCREEN_BLANK_ON_BOOT := true
 TW_THEME := portrait_hdpi
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_HAS_EDL_MODE := true
