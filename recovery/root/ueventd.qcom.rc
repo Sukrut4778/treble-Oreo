@@ -270,4 +270,3 @@
 
 # lirc
 /dev/lirc0                0660   system     system 
-
